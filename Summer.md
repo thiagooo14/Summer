@@ -25,7 +25,7 @@ const party = [
 ];
 ```
 
-Se Você quisesse subir o lvl de todos os personagens, utilizando o for você faria da seguinte maneira:
+Se Você quisesse subir o `lvl` de todos os personagens, utilizando o for você faria da seguinte maneira:
 ```js
 const party = [
   {character:'Daniel', class:'Paladino', lvl:15},
