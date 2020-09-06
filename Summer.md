@@ -18,7 +18,7 @@ A Função map possui a mesma estrutura das outras HOFs, ela transforma todos os
 Para Entender Melhor vammos imaginar um grupo de RPG representado no seguinte array:
 ```js
 const party = [
-  {character:'daniel', class:'paladino', lvl:15},
+  {character:'Daniel', class:'Paladino', lvl:15},
   {character:'Patolino', class:'Mago', lvl:20},
   {character:'Conan', class:'Barbaro', lvl:21},
   {character:'Arsenal', class:'Mestre', lvl:42}
@@ -28,7 +28,7 @@ const party = [
 Se Você quisesse subir o lvl de todos os personagens, utilizando o for você faria da seguinte maneira:
 ```js
 const party = [
-  {character:'daniel', class:'paladino', lvl:15},
+  {character:'Daniel', class:'Paladino', lvl:15},
   {character:'Patolino', class:'Mago', lvl:20},
   {character:'Conan', class:'Barbaro', lvl:21},
   {character:'Arsenal', class:'Mestre', lvl:42}
@@ -44,13 +44,13 @@ console.log(lvlUp); // [16, 21, 22, 43]
 Agora com o map
 ```js
 const party = [
-  {character:'daniel', class:'paladino', lvl:15},
+  {character:'Daniel', class:'Paladino', lvl:15},
   {character:'Patolino', class:'Mago', lvl:20},
   {character:'Conan', class:'Barbaro', lvl:21},
   {character:'Arsenal', class:'Mestre', lvl:42}
 ];
 
-const lvlUp = party.map((party) => party.lvl + 1)
+const lvlUp = party.map((partyMembe) => partyMembe.lvl + 1)
 
 console.log(lvlUp); // [16, 21, 22, 43]
 ```
@@ -62,7 +62,7 @@ A Função Adicionoi 1 a todos os valores de lvl e retornou um array novo com ca
 outro exemplo que podemos fazer é Juntar o character com sua respectiva class, Veja como ficaria com o for
 ```js
 const party = [
-  {character:'daniel', class: 'paladino', lvl: 15},
+  {character:'Daniel', class: 'Paladino', lvl: 15},
   {character:'Patolino', class: 'Mago', lvl: 20},
   {character:'Conan', class: 'Barbaro', lvl: 21},
   {character:'Arsenal', class: 'Mestre', lvl: 42}
@@ -79,20 +79,52 @@ console.log(member)
 e com o Map
 ```js
 const party = [
-  {character:'daniel', class: 'paladino', lvl: 15},
+  {character:'Daniel', class: 'Paladino', lvl: 15},
   {character:'Patolino', class: 'Mago', lvl: 20},
   {character:'Conan', class: 'Barbaro', lvl: 21},
   {character:'Arsenal', class: 'Mestre', lvl: 42}
 ];
 
-const member = party.map((party) => `${party.character} ${party.class}`);
+const member = party.map((partyMembe) => `${partyMembe.character} ${partyMembe.class}`);
 
-console.log(member) // ["daniel paladino", "Patolino Mago", "Conan Barbaro", "Arsenal Mestre"]
+console.log(member) // ["Daniel Paladino", "Patolino Mago", "Conan Barbaro", "Arsenal Mestre"]
 ```
 
 #### Vamos Praticar um pouco
+1. dobre o lvl dos membros
+2. crie um array que junta primeiro a class e depois o character dos membros
+3. crie um array que retorne apenas as class 
+
+agora imagine que temos dois arrays, uma para o personagem e outra para sua defesa
+```js
+const character = ['Daniel', 'Patolino', 'Conan', 'Arsenal'];
+const armor = [20, 12, 16, 25];
+```
+com o .map podemos podemos unir os dois arrays em um só, dessa forma teremos o array:
+```js
+const charArmor = [{ Daniel:20}, ...]
+```
+
+Antes de proceguir, tente pensar como você faria para resolver esse problema, Vale lembrar que as HOFs podem receber vários parâmetros, não apenas o elemento que esta interada!
+
+```js
+ const character = ['Daniel', 'Patolino', 'Conan', 'Arsenal'];
+ const armor = [20, 12, 16, 25];
+
+const charArmor = (listChar, listArmor) => {
+  return listChar.map((char, i) => (
+    { [char]: listArmor[i] }
+  ));
+};
+
+const armorChar = charArmor(character, armor);
+
+console.log(charArmor)
+```
 
 
-## Tempo sugerido para realização: 120 minutos
-## __Exercícios__
-## __Recursos Adicionais__
+## Reduce
+
+## Exercícios
+###### Tempo sugerido para realização: 120 minutos
+## Recursos Adicionais
