@@ -18,20 +18,20 @@ A Função map possui a mesma estrutura das outras HOFs, ela transforma todos os
 Para Entender Melhor vammos imaginar um grupo de RPG representado no seguinte array:
 ```js
 const party = [
-  {Character:'daniel', class:'paladino', lvl:15},
-  {Character:'Patolino', class:'Mago', lvl:20},
-  {Character:'Conan', class:'Barbaro', lvl:21},
-  {Character:'Arsenal', class:'Mestre', lvl:42}
+  {character:'daniel', class:'paladino', lvl:15},
+  {character:'Patolino', class:'Mago', lvl:20},
+  {character:'Conan', class:'Barbaro', lvl:21},
+  {character:'Arsenal', class:'Mestre', lvl:42}
 ];
 ```
 
 Se Você quisesse subir o lvl de todos os personagens, utilizando o for você faria da seguinte maneira:
 ```js
 const party = [
-  {Character:'daniel', class:'paladino', lvl:15},
-  {Character:'Patolino', class:'Mago', lvl:20},
-  {Character:'Conan', class:'Barbaro', lvl:21},
-  {Character:'Arsenal', class:'Mestre', lvl:42}
+  {character:'daniel', class:'paladino', lvl:15},
+  {character:'Patolino', class:'Mago', lvl:20},
+  {character:'Conan', class:'Barbaro', lvl:21},
+  {character:'Arsenal', class:'Mestre', lvl:42}
 ];
 let lvlUp = []
 for ( let i = 0; i < party.length; i += 1){
@@ -44,10 +44,10 @@ console.log(lvlUp); // [16, 21, 22, 43]
 Agora com o map
 ```js
 const party = [
-  {Character:'daniel', class:'paladino', lvl:15},
-  {Character:'Patolino', class:'Mago', lvl:20},
-  {Character:'Conan', class:'Barbaro', lvl:21},
-  {Character:'Arsenal', class:'Mestre', lvl:42}
+  {character:'daniel', class:'paladino', lvl:15},
+  {character:'Patolino', class:'Mago', lvl:20},
+  {character:'Conan', class:'Barbaro', lvl:21},
+  {character:'Arsenal', class:'Mestre', lvl:42}
 ];
 
 const lvlUp = party.map((party) => party.lvl + 1)
@@ -55,7 +55,43 @@ const lvlUp = party.map((party) => party.lvl + 1)
 console.log(lvlUp); // [16, 21, 22, 43]
 ```
 
-veja que o for foi substituido por apenas uma linha de codigo
+Veja que o for foi substituido por apenas uma linha de codigo.
+
+A Função Adicionoi 1 a todos os valores de lvl e retornou um array novo com cada um dos valores. Note que o amanho do array party e lvlUp é o mesmo (4 elementos).
+
+outro exemplo que podemos fazer é Juntar o character com sua respectiva class, Veja como ficaria com o for
+```js
+const party = [
+  {character:'daniel', class: 'paladino', lvl: 15},
+  {character:'Patolino', class: 'Mago', lvl: 20},
+  {character:'Conan', class: 'Barbaro', lvl: 21},
+  {character:'Arsenal', class: 'Mestre', lvl: 42}
+];
+
+let member = [];
+for(let i = 0; i <party.length; i += 1){
+  member.push(`${party[i].character} ${party[i].class}`)
+}
+
+console.log(member)
+```
+
+e com o Map
+```js
+const party = [
+  {character:'daniel', class: 'paladino', lvl: 15},
+  {character:'Patolino', class: 'Mago', lvl: 20},
+  {character:'Conan', class: 'Barbaro', lvl: 21},
+  {character:'Arsenal', class: 'Mestre', lvl: 42}
+];
+
+const member = party.map((party) => `${party.character} ${party.class}`);
+
+console.log(member) // ["daniel paladino", "Patolino Mago", "Conan Barbaro", "Arsenal Mestre"]
+```
+
+#### Vamos Praticar um pouco
+
 
 ## Tempo sugerido para realização: 120 minutos
 ## __Exercícios__
