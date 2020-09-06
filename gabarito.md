@@ -33,7 +33,7 @@ const character = [
   { class: 'MaGuerreirago', lvl: 11 },
 ];
 
-const classLvl = character.map(char => `${char.class} ${char.lvl}`);
+const classLvl = character.map(char => `${char.class} de nível ${char.lvl}`);
 
 console.log(classLvl);
 

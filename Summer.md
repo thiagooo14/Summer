@@ -1,7 +1,7 @@
 # JavaScript ES6 - Higher Order Functions - map e reduce
 ## O que vamos aprender?
   Hoje Você vai aprender duas poderosas (e complexas) *Higher-Order Functions*: Array.map e o Array.reduce
-  Essas duas funções são utilizadas para Manipular e criar Arrays. elas tem o intuito de deixar seu codigo mais legivel, conciso e expressivo
+  Essas duas funções são utilizadas para manipular e criar Arrays. elas tem o intuito de deixar seu codigo mais legível, conciso e expressivo
 
 ## Você será capaz de:
 - Manipular e construir Arrays
@@ -10,8 +10,8 @@
 - Agregar dados com array.reduce
 
 ## Porque isso é importante?
-  Como ja visto anteriormente as *HOFs* ajudam bastante na redução e compreenção de codigos.
-  map e reduce são duas *HOFs* muito importantes, porem mais complicadas, elas facilitam muito na criação e manipulação de arrays.
+  Como ja visto anteriormente as *HOFs* ajudam bastante na redução da quantidade de código escrito e na legibilidade deste.
+  map e reduce são duas *HOFs* muito importantes, pois elas facilitam muito na criação e manipulação de arrays. Com elas, você fará muito mais operações com muito menos linhas.
 ## Conteúdos
 ### Map
 A função map possui a mesma estrutura das outras HOFs, ela transforma todos os itens de um array para outro array!
@@ -53,7 +53,7 @@ const party = [
   { character: 'Arsenal', class: 'Mestre', lvl: 42 },
 ];
 
-const lvlUp = party.map(partyMembe => partyMembe.lvl += 1);
+const lvlUp = party.map(partyMembe => partyMembe.lvl + 1);
 
 console.log(lvlUp); // [16, 21, 22, 43]
 ```
@@ -79,7 +79,7 @@ for (let i = 0; i < party.length; i += 1) {
 console.log(member);
 ```
 
-e com o Map
+Já com o Map:
 ```js
 const party = [
   { character: 'Daniel', class: 'Paladino', lvl: 15 },
@@ -151,13 +151,13 @@ const character = [
   { class: 'Druida', lvl: 13 },
   { class: 'Cleriga', lvl: 3 },
   { class: 'Ladino', lvl: 9 },
-  { class: 'MaGuerreirago', lvl: 11 },
+  { class: 'Guerreira', lvl: 11 },
 ];
 
 let classLvl = [];
 
 for (let i = 0; i < character.length; i += 1) {
-  classLvl.push(`${character[i].class} ${character[i].lvl}`);
+  classLvl.push(`${character[i].class} de nível ${character[i].lvl}`);
 }
 
 console.log(classLvl);
