@@ -14,6 +14,8 @@
   map e reduce são duas *HOFs* muito importantes, pois elas facilitam muito na criação e manipulação de arrays. Com elas, você fará muito mais operações com muito menos linhas.
 ## Conteúdos
 ### Map
+![Alt Text](https://miro.medium.com/max/1000/1*4EGwsCicbWJeml2aAm714A.gif)
+
 A função map possui a mesma estrutura das outras HOFs, ela transforma todos os itens de um array para outro array!
 
 Para entender melhor vamos imaginar um grupo de RPG representado no seguinte array:
@@ -103,9 +105,10 @@ agora imagine que temos dois arrays, uma para o personagem e outra para sua defe
 const character = ['Daniel', 'Patolino', 'Conan', 'Arsenal'];
 const armor = [20, 12, 16, 25];
 ```
+
 com o .map podemos podemos unir os dois arrays em um só, dessa forma teremos o array:
 ```js
-const charArmor = [{ Daniel:20}, ...];
+const charArmor = [{ Daniel: 20 }, ...];
 ```
 
 Antes de proceguir, tente pensar como você faria para resolver esse problema, Vale lembrar que as HOFs podem receber vários parâmetros, não apenas o elemento que esta interada!
@@ -144,6 +147,7 @@ for (let i = 0; i < atack.length; i += 1) {
 
 console.log(result); //[hit, hit, miss, miss, hit]
 ```
+
 2.
 ```js
 const character = [
@@ -164,6 +168,10 @@ console.log(classLvl);
 ```
 
 ## Reduce 
+
+![Alt Text](https://miro.medium.com/max/1000/1*dhTC_FFgiH3mKROrnDj12w.gif)
+
+
 
 ## Exercícios
 ###### Tempo sugerido para realização: 120 minutos
