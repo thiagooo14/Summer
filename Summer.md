@@ -169,7 +169,7 @@ console.log(classLvl);
 ```
 
 ## Reduce 
-Diferente das outras *HOF's* o Reduce precia receber um parametro a mais, o acumulador, tambêm chamado de acc, ele é responsavel por acumular todos os valores e devolver o resultado Final
+Diferente das outras *HOF's* o Reduce precia receber um parâmetro a mais, o acumulador, também chamado de acc, ele é responsável por acumular todos os valores e devolver o resultado final.
 
 ![Alt Text](https://miro.medium.com/max/1000/1*dhTC_FFgiH3mKROrnDj12w.gif)
 
@@ -201,7 +201,7 @@ for (let i = 0; i < dmg.length; i++) {
 console.log(totalDmg);
 ```
 
-veja que foi preciso Setar uma variavel, com o valor inicial de 0, e a cada interação do for ele pega o valor atual e adiciona o valor do `dano`, agora veja como fazer com o reduce.
+veja que foi preciso setar uma variavel, com o valor inicial de 0, e a cada interação do for ele pega o valor atual e adiciona o valor do `dano`, agora veja como fazer com o reduce.
 ```js
 const dmg = [
   { golpe: 'Espada justiceira', dano: 24 },
@@ -214,8 +214,14 @@ const totalDmg = dmg.reduce((valorAcumulador, valorArray) => valorAcumulador + v
 
 console.log("total de dano:", totalDmg); // total de dano: 84
 ```
-Nesse exemplo o parametro `valorAcumulador` faz a função de pegar o valor atual e adicionar o valor do `dano`.
-No Final da função, passamos um segundo parametro que representa o valor inicial, que representa o que queremos receber no final, como queremos receber um numero que representa a soma de todos os danos, passamos o numero 0
+
+a sintaxe utilizada para o reduce é a seguinte:
+```js
+  array.reduce(function(acc, arr), valorInicial)
+```
+
+Nesse exemplo, o primeiro parametro, a função, recebe o `valorAcumulador` que a cada interação é adicionado o `valorArray` referente ao `dano`.
+No final da função temos o segundo parametro o `valorInicial` ele se relaciona com o que queremos receber no final, como queremos receber um numero que representa a soma de todos os danos, passamos `0` para iniciar a soma.
 
 * Experimente Trocar o `0` para outro valores, como por exemplo `5` ou `-10` e veja o que acontece
 
@@ -231,9 +237,9 @@ const dmg = [
 const grupDmg = dmg.reduce((acc, arr) => {
   const danoParOuImpar = arr.dano %2 === 0 ? 'par' : 'impar';
 
-  acc[danoParOuImpar].push(arr);
-  return acc;
-}, { par: [], impar: []});
+  acc[danoParOuImpar].push(arr); // valores pares serão empurrados para o valor de par do acumulador e impares para o de impar 
+  return acc; // O acumulador é retornado da primeira para a segunda interação e assim respectivamente
+}, { par: [], impar: []}); // valor inicial de acc
 
 console.log(grupDmg);
 /*Object {
@@ -266,9 +272,11 @@ const dmg = [
   { golpe: 'Choque do trovão', dano: 17 },
 ];
 ```
-1. apos o inimigo receber todos os danos, ele absorve 5, crie um reduce que calcule o dano que reduza 5 do dano
-2.crie um reduce que agrupe os golpes em quais causaram mais de 20 pontos e os que causaram menos!
-
+1.crie um reduce que calcule a soma do dano recebido por todos os golpes, sabendo que o inimigo absorve 5 do dano total.
+<!-- ver depois -->
+2.crie um reduce que agrupe em um objeto os golpes que causaram 20 ou mais pontos de dano e os que causaram menos!
+Dica: use um array que agrupe os golpes maiores e menores
+<!-- ver depois -->
 #### map + reduce
 
 Podemos tambêm usar as duas *HOFs* que aprendemos hoje.
@@ -294,6 +302,11 @@ Porem, podemos, tambêm, juntar as duas *HOFs* em um unico comando:
 const doubleDamage = dmg.map (d => d.dano *2).reduce ((acc, arr) => acc + arr, 0);
 
 console.log('dano total:', doubleDamage);// "dano total:" 168
+```
+
+O resultado do map, é um array, que encadeado com o reduce é como se fizesse(mos):
+```js
+[48, 36, 50, 34].reduce ((acc, arr) => acc + arr, 0);
 ```
 
 ## Exercícios

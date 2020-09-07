@@ -58,7 +58,7 @@ const dmg = [
   { golpe: 'Espada justiceira', dano: 24 },
   { golpe: 'Bola de fogo', dano: 18 },
   { golpe: 'Meteoro de pegasus', dano: 25 },
-  { golpe: 'Choque do trovão', dano: 17 },,
+  { golpe: 'Choque do trovão', dano: 17 },
 ];
 
 const grupDmg = dmg.reduce((acc, arr) => {
@@ -70,3 +70,24 @@ const grupDmg = dmg.reduce((acc, arr) => {
 
 console.log(grupDmg);
 ```
+## Exercicio
+
+1.
+
+2.
+
+3.
+
+4.
+
+5.
+
+6.
+
+#### bonus
+
+7.
+
+8.
+
+9.
