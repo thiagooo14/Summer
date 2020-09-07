@@ -38,4 +38,35 @@ const classLvl = character.map(char => `${char.class} de nível ${char.lvl}`);
 console.log(classLvl);
 
 ```
+###### fixação reduce
+1. apos o inimigo receber todos os danos, ele absorve 5, crie um reduce que calcule o dano que reduza 5 do dano
+```js
+const dmg = [
+  { golpe: 'Espada justiceira', dano: 24 },
+  { golpe: 'Bola de fogo', dano: 18 },
+  { golpe: 'Meteoro de pegasus', dano: 25 },
+  { golpe: 'Choque do trovão', dano: 17 },
+];
 
+const totalDmg = dmg.reduce((valorAcumulador, valorArray) => valorAcumulador + valorArray.dano, -5);
+
+console.log("total de dano:", totalDmg);
+```
+2.crie um reduce que agrupe os golpes em quais causaram mais de 20 pontos e os que causaram menos!
+```js
+const dmg = [
+  { golpe: 'Espada justiceira', dano: 24 },
+  { golpe: 'Bola de fogo', dano: 18 },
+  { golpe: 'Meteoro de pegasus', dano: 25 },
+  { golpe: 'Choque do trovão', dano: 17 },,
+];
+
+const grupDmg = dmg.reduce((acc, arr) => {
+  const danoMAiorOuMenor = arr.dano >= 20 ? 'Maior' : 'Menor';
+
+  acc[danoMAiorOuMenor].push(arr);
+  return acc;
+}, { Maior: [], Menor: []});
+
+console.log(grupDmg);
+```

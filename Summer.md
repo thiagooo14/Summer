@@ -14,9 +14,10 @@
   map e reduce são duas *HOFs* muito importantes, pois elas facilitam muito na criação e manipulação de arrays. Com elas, você fará muito mais operações com muito menos linhas.
 ## Conteúdos
 ### Map
-![Alt Text](https://miro.medium.com/max/1000/1*4EGwsCicbWJeml2aAm714A.gif)
 
 A função map possui a mesma estrutura das outras HOFs, ela transforma todos os itens de um array para outro array!
+
+![Alt Text](https://miro.medium.com/max/1000/1*4EGwsCicbWJeml2aAm714A.gif)
 
 Para entender melhor vamos imaginar um grupo de RPG representado no seguinte array:
 ```js
@@ -29,7 +30,7 @@ const party = [
 
 ```
 
-Se Você quisesse subir o `lvl` de todos os personagens, utilizando o for você faria da seguinte maneira:
+Se você quisesse subir o `lvl` de todos os personagens, utilizando o for você faria da seguinte maneira:
 ```js
 const party = [
   { character: 'Daniel', class: 'Paladino', lvl: 15 },
@@ -62,7 +63,7 @@ console.log(lvlUp); // [16, 21, 22, 43]
 
 Veja que o for foi substituido por apenas uma linha de codigo.
 
-A Função Adicionoi 1 a todos os valores de lvl e retornou um array novo com cada um dos valores. Note que o amanho do array party e lvlUp é o mesmo (4 elementos).
+A função adicionoi 1 a todos os valores de lvl e retornou um array novo com cada um dos valores. Note que o amanho do array party e lvlUp é o mesmo (4 elementos).
 
 outro exemplo que podemos fazer é Juntar o character com sua respectiva class, Veja como ficaria com o for
 ```js
@@ -168,11 +169,139 @@ console.log(classLvl);
 ```
 
 ## Reduce 
+Diferente das outras *HOF's* o Reduce precia receber um parametro a mais, o acumulador, tambêm chamado de acc, ele é responsavel por acumular todos os valores e devolver o resultado Final
 
 ![Alt Text](https://miro.medium.com/max/1000/1*dhTC_FFgiH3mKROrnDj12w.gif)
 
+Para entender melhor, vamos imaginar que você quer calcular o dano que seu grupo deu no inimigo, para isso vamos usar o seguinte array:
+```js
+const character = [
+  { golpe: 'Espada justiceira', dano: 24 },
+  { golpe: 'Bola de fogo', dano: 22 },
+  { golpe: 'Meteoro de pegasus', dano: 25 },
+  { golpe: 'Choque do trovão', dano: 17 },
+];
+```
 
+com o for seria feito da seguinte maneira:
+```js
+const dmg = [
+  { golpe: 'Espada justiceira', dano: 24 },
+  { golpe: 'Bola de fogo', dano: 19 },
+  { golpe: 'Meteoro de pegasus', dano: 25 },
+  { golpe: 'Choque do trovão', dano: 17 },
+];
+
+let totalDmg = 0;
+
+for (let i = 0; i < dmg.length; i++) {
+  totalDmg = totalDmg + dmg[i].dano;
+}
+
+console.log(totalDmg);
+```
+
+veja que foi preciso Setar uma variavel, com o valor inicial de 0, e a cada interação do for ele pega o valor atual e adiciona o valor do `dano`, agora veja como fazer com o reduce.
+```js
+const dmg = [
+  { golpe: 'Espada justiceira', dano: 24 },
+  { golpe: 'Bola de fogo', dano: 18 },
+  { golpe: 'Meteoro de pegasus', dano: 25 },
+  { golpe: 'Choque do trovão', dano: 17 },
+];
+
+const totalDmg = dmg.reduce((valorAcumulador, valorArray) => valorAcumulador + valorArray.dano, 0);
+
+console.log("total de dano:", totalDmg); // total de dano: 84
+```
+Nesse exemplo o parametro `valorAcumulador` faz a função de pegar o valor atual e adicionar o valor do `dano`.
+No Final da função, passamos um segundo parametro que representa o valor inicial, que representa o que queremos receber no final, como queremos receber um numero que representa a soma de todos os danos, passamos o numero 0
+
+* Experimente Trocar o `0` para outro valores, como por exemplo `5` ou `-10` e veja o que acontece
+
+Agora imagine que você separar quem causou uma quantidade par, e quem causou uma quantidade impra de dano. 
+```js
+const dmg = [
+  { golpe: 'Espada justiceira', dano: 24 },
+  { golpe: 'Bola de fogo', dano: 18 },
+  { golpe: 'Meteoro de pegasus', dano: 25 },
+  { golpe: 'Choque do trovão', dano: 17 },,
+];
+
+const grupDmg = dmg.reduce((acc, arr) => {
+  const danoParOuImpar = arr.dano %2 === 0 ? 'par' : 'impar';
+
+  acc[danoParOuImpar].push(arr);
+  return acc;
+}, { par: [], impar: []});
+
+console.log(grupDmg);
+/*Object {
+  impar:[Object {
+    dano: 25,
+    golpe: "meteoro de pegasus"
+  }, Object {
+    dano: 17,
+    golpe: "Choque do trovão"
+  }],
+  par: [Object {
+    dano: 24,
+    golpe: "Espada justiceira"
+  }, Object {
+    dano: 18,
+    golpe: "Bola de fogo"
+  }]
+}*/
+```
+
+Repare que agora como queremos que o retorno seja um um objeto, o valor inicial é passado o objeto com as chaves que queremos retornar!
+
+### vamos praticar mais um pouco
+ainda usando o array:
+```js
+const dmg = [
+  { golpe: 'Espada justiceira', dano: 24 },
+  { golpe: 'Bola je jogo', dano: 18 },
+  { golpe: 'Meteoro de pegasus', dano: 25 },
+  { golpe: 'Choque do trovão', dano: 17 },
+];
+```
+1. apos o inimigo receber todos os danos, ele absorve 5, crie um reduce que calcule o dano que reduza 5 do dano
+2.crie um reduce que agrupe os golpes em quais causaram mais de 20 pontos e os que causaram menos!
+
+#### map + reduce
+
+Podemos tambêm usar as duas *HOFs* que aprendemos hoje.
+Imagine que você queira dobrar o dano e depois totalizar o dano causado! como você faria isso?
+```js
+const dmg = [
+  { golpe: 'Espada justiceira', dano: 24 },
+  { golpe: 'Bola je jogo', dano: 18 },
+  { golpe: 'Meteoro de pegasus', dano: 25 },
+  { golpe: 'Choque do trovão', dano: 17 },
+];
+
+const doubleDamage = dmg.map (d => d.dano *2);
+const totalDmg = doubleDamage.reduce ((acc, arr) => acc + arr, 0);
+
+console.log('20 é 20:', doubleDamage); // "20 é 20:" [48, 36, 50, 34]
+console.log('total de dano:', totalDmg)// "total de dano:" 168
+```
+
+Porem, podemos, tambêm, juntar as duas *HOFs* em um unico comando:
+
+```js
+const doubleDamage = dmg.map (d => d.dano *2).reduce ((acc, arr) => acc + arr, 0);
+
+console.log('dano total:', doubleDamage);// "dano total:" 168
+```
 
 ## Exercícios
-###### Tempo sugerido para realização: 120 minutos
+<!-- Criar alguns exercicios -->
 ## Recursos Adicionais
+
+<!-- lembrar de arrumar o MD depois! -->
+
+ documentação do reduce: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+
+documentação do map: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/map
