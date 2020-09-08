@@ -72,22 +72,138 @@ console.log(grupDmg);
 ```
 ## Exercicio
 
-1.
-
-2.
-
-3.
-
 4.
+```js
+const party = [
+  {
+    name: 'Daniel',
+    class: 'Paladino',
+    lvl: 15,
+    defesa: 20,
+    ataque: {
+      golpe: 'Espada justiceira',
+      dano: 35,
+    },
+   },
+   {
+     name: 'Patolino',
+     class: 'Mago',
+     lvl: 20,
+     defesa: 12,
+     ataque: {
+       golpe: 'Bola de fogo',
+       dano: 32,
+      },
+    },
+   {
+    name: 'Conan',
+    class: 'Barbaro',
+    lvl: 21,
+    defesa: 16,
+    ataque: {
+      golpe: 'Golpe fulminante',
+      dano: 27,
+    },
+   },
+   {
+    name: 'Arsenal',
+    class: 'Mestre',
+    lvl: 42,
+    defesa: 25,
+    ataque: {
+      golpe: 'Vingadora Sagrada',
+      dano: 42,
+    },
+   },
+];
+
+const atkChar = party.map(atk => `${atk.name}, o ${atk.class} usou ${atk.ataque.golpe}`)
+console.log(atkChar);
+```
+
+2. 
+```js
+const ataque = [
+  { golpe: 'Espada justiceira', acerto: 20, dano: 24 },
+  { golpe: 'Bola de fogo', acerto: 7, dano: 18 },
+  { golpe: 'Meteoro de pegasus', acerto: 9, dano: 25 },
+  { golpe: 'Choque do trovão', acerto: 14, dano: 17 },
+  { golpe: 'Force Push', acerto: 18, dano: 17 },
+  { golpe: 'Detroid Smash', acerto: 20, dano: 26 },
+];
+
+const hitDamage = ataque.map((atk) =>
+  atk.acerto === 20
+    ? `${atk.golpe} causa ${atk.dano * 2} pontos de dano`
+    : `${atk.golpe} causa ${atk.dano} pontos de dano`
+);
+
+
+console.log(hitDamage);
+```
+3. 
+```js
+const ataque = [
+  { golpe: 'Espada justiceira', acerto: 20, dano: 24 },
+  { golpe: 'Bola de fogo', acerto: 7, dano: 18 },
+  { golpe: 'Meteoro de pegasus', acerto: 9, dano: 25 },
+  { golpe: 'Choque do trovão', acerto: 14, dano: 17 },
+  { golpe: 'Force Push', acerto: 18, dano: 17 },
+  { golpe: 'Detroid Smash', acerto: 20, dano: 26 },
+];
+
+const hit = ataque.map(atk =>
+  atk.acerto > 10
+    ? `${atk.golpe} acertou e causou ${atk.dano} pontos de danos`
+    : `${atk.golpe} falhou`
+);
+
+console.log(hit);
+```
+
+4. 
+```js
+const dano = [24, 18, 25, 17, 43, 27, 32, 35];
+
+const danoTotal = dano.reduce((acc, arr) => acc + arr, -dano.length * 3);
+
+console.log(danoTotal);
+```
 
 5.
+```js
+const ataque = [
+  { golpe: 'Espada justiceira', acerto: 20, dano: 24 },
+  { golpe: 'Bola de fogo', acerto: 7, dano: 18 },
+  { golpe: 'Meteoro de pegasus', acerto: 9, dano: 25 },
+  { golpe: 'Choque do trovão', acerto: 14, dano: 17 },
+  { golpe: 'Force Push', acerto: 18, dano: 16 },
+  { golpe: 'Detroid Smash', acerto: 20, dano: 26 },
+];
+
+const avgDmg = ataque.reduce((acc, arr) => acc + arr.dano , 0) / ataque.length
+
+console.log(avgDmg)
+```
 
 6.
+```js
+  { golpe: 'Espada justiceira', acerto: 20, dano: 24 },
+  { golpe: 'Bola de fogo', acerto: 7, dano: 18 },
+  { golpe: 'Meteoro de pegasus', acerto: 9, dano: 25 },
+  { golpe: 'Choque do trovão', acerto: 14, dano: 17 },
+  { golpe: 'Force Push', acerto: 18, dano: 16 },
+  { golpe: 'Detroid Smash', acerto: 20, dano: 26 },
 
-#### bonus
+const hitDamage = ataque.map(atk =>{
+  if(atk.acerto === 20){
+    return atk.dano * 2
+  } else if (atk.acerto > 10){
+    return atk.dano
+  } else {
+    return 0
+  }
+}).reduce((acc, arr) => acc + arr, 0)
 
-7.
-
-8.
-
-9.
+console.log(hitDamage);
+```
